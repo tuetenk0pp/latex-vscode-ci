@@ -1,0 +1,34 @@
+# .gitignore
+
+# TeX Files
+*.aux
+*.log
+*.dvi
+*.lof
+*.lot
+*.toc
+*.xml
+*.bcf
+*.bbl
+*.blg
+*.out
+*.tdo
+*.fls
+*.synctex.gz
+*.synctex(busy)
+*.nav
+*.snm
+*.vrb
+*.fdb_latexmk
+*.lol
+*.glsdefs
+*.auxlock
+*.dep
+*.md5
+*.dpth
+_minted*
+*.pyg
+__latexindent_temp.tex
+
+# Latexmk products
+main.pdf

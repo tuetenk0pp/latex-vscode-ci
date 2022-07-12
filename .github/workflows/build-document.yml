@@ -1,0 +1,22 @@
+name: Build Document
+
+on:
+  push:
+    paths:
+      - '**.tex'
+
+jobs:
+  build-document:
+    runs-on: ubuntu-latest
+    container: texlive/texlive
+    steps:
+      - name: checkout
+        uses: actions/checkout@v2
+      - name: build
+        run: latexmk
+      - name: upload
+        uses: actions/upload-artifact@v3
+        with:
+          name: Dokument
+          path: main.pdf
+          retention-days: 5

@@ -1,0 +1,9 @@
+// .devcontainer.json
+{
+    "name": "TexLive",
+    "image": "texlive/texlive",
+    "extensions": [
+        "James-Yu.latex-workshop",
+        "valentjn.vscode-ltex"
+    ]
+}
