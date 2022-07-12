@@ -1,3 +1,5 @@
+# build-document.yml
+
 name: Build Document
 
 on:
@@ -18,10 +20,12 @@ jobs:
           GITHUB_SHA_SHORT=$(git rev-parse --short $GITHUB_SHA)
           sed -i "/GIT COMMIT INFORMATIONEN/a , Commit \\\ttfamily\\\href{$GITHUB_SERVER_URL/$GITHUB_REPOSITORY/commit/$GITHUB_SHA}{$GITHUB_SHA_SHORT}" praeambel.tex
       - name: build
-        run: latexmk
-      - name: upload
+        run: latexmk -silent
+      - name: upload artifacts
         uses: actions/upload-artifact@v3
         with:
           name: Dokument
           path: main.pdf
           retention-days: 5
+      # - name: upload webdav
+      #   run: curl -T main.pdf -u "$WEBDAV_USER:$WEBDAV_PASSWORD" "$WEBDAV_URL/main.pdf"

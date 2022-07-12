@@ -1,0 +1,21 @@
+# .gitlab.ci.yml
+
+build-document:
+    image: texlive/texlive
+    script:
+        - 'echo commit info'
+        - 'sed -i "/GIT COMMIT INFORMATIONEN/a , Commit \\\ttfamily\\\href{$CI_PROJECT_URL/-/commit/$CI_COMMIT_SHA}{$CI_COMMIT_SHORT_SHA}" praeambel.tex'
+        - 'echo build'
+        - 'latexmk -silent'
+        # - 'echo upload webdav'
+        # - 'curl -T main.pdf -u "$WEBDAV_USER:$WEBDAV_PASSWORD" "$WEBDAV_URL/main.pdf"'
+    after_script:
+        - 'cat main.log'
+    artifacts:
+        paths:
+            - 'main.pdf'
+        expire_in: 
+    only:
+        changes:
+          - '**.tex'
+    when: manual
