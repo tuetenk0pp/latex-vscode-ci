@@ -13,6 +13,10 @@ jobs:
     steps:
       - name: checkout
         uses: actions/checkout@v2
+      - name: commit info
+        run: |
+          GITHUB_SHA_SHORT=$(git rev-parse --short $GITHUB_SHA)
+          sed -i "/GIT COMMIT INFORMATIONEN/a , Commit \\\ttfamily\\\href{$GITHUB_SERVER_URL/$GITHUB_REPOSITORY/commit/$GITHUB_SHA}{$GITHUB_SHA_SHORT}" praeambel.tex
       - name: build
         run: latexmk
       - name: upload
