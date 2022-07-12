@@ -1,6 +1,7 @@
 name: Build Document
 
 on:
+  workflow_dispatch:
   push:
     paths:
       - '**.tex'
