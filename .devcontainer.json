@@ -1,9 +1,12 @@
 // .devcontainer.json
 {
     "name": "TexLive",
-    "image": "texlive/texlive",
+    "image": "texlive/texlive:latest",
+    "mounts": [
+        { "source": "c:/windows/fonts", "target": "/usr/share/fonts/windows", "type": "bind" }
+    ],
     "extensions": [
-        "James-Yu.latex-workshop",
-        "valentjn.vscode-ltex"
+        //"valentjn.vscode-ltex",
+        "James-Yu.latex-workshop"
     ]
 }
