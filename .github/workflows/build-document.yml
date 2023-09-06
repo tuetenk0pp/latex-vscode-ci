@@ -14,7 +14,7 @@ jobs:
     container: texlive/texlive
     steps:
       - name: checkout
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
       - name: commit info
         run: |
           GITHUB_SHA_SHORT=$(git rev-parse --short $GITHUB_SHA)
